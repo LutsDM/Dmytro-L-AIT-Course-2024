@@ -47,9 +47,7 @@ public class MaxMin {
                         System.out.println("Минимальное значение double: " + Double.MIN_VALUE);
                         System.out.println("Максимальное значение double: " + Double.MAX_VALUE);
                         break;
-                    default:
-                        System.out.println("Неверный тип: " + type[i]);
-                        break;
+
                 }
             }
         }
