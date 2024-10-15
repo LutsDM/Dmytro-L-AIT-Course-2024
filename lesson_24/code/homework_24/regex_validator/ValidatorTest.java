@@ -30,7 +30,13 @@ class ValidatorTest {
 
     @Test
     void checkDateFormatUS() {
-        // TODO Homework test for checkDateFormatUS
+        assertTrue(Validator.checkDateFormatUS("2023-10-26"));
+        assertTrue(Validator.checkDateFormatUS("2023-02-11"));
+        assertTrue(Validator.checkDateFormatUS("2023-02-31"));
+        assertFalse(Validator.checkDateFormatUS("2023-02-32"));
+        assertFalse(Validator.checkDateFormatUS("2023-13-15"));
+        assertFalse(Validator.checkDateFormatUS("2023/02/26"));
+        assertFalse(Validator.checkDateFormatUS("2023.10.5"));
     }
 
     @Test
