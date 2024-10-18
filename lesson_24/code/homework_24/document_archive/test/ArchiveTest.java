@@ -1,6 +1,6 @@
 package homework_24.document_archive.test;
 
-import homework_24.document_archive.controller.Archive;
+import homework_24.document_archive.dao.ArchiveImpl;
 import homework_24.document_archive.model.Document;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ArchiveTest {
 
-    Archive archive;
+    ArchiveImpl archive;
 
     Document[] documents;
     int size = 0;
@@ -17,7 +17,7 @@ class ArchiveTest {
     @BeforeEach
     void setUp() {
 
-        archive = new Archive(5);
+        archive = new ArchiveImpl(5);
         documents = new Document[5];
 
         documents[0] = new Document(1_111_111_110L,"T0","A0",1998);

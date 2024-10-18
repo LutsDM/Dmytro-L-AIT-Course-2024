@@ -1,4 +1,4 @@
-package homework_24.document_archive.controller;
+package homework_24.document_archive.dao;
 //Реализовать методы:
 //        - печать списка всех документов в архиве; +
 //        - получение кол-ва документов в архиве; +
@@ -12,12 +12,12 @@ package homework_24.document_archive.controller;
 
 import homework_24.document_archive.model.Document;
 
-public class Archive {
+public class ArchiveImpl {
 
     private Document[] documents;
     private int size;
 
-    public Archive(int capacity) {
+    public ArchiveImpl(int capacity) {
         this.documents = new Document[capacity];
         this.size = 0;
     }
