@@ -1,6 +1,10 @@
 package ait.employee.dao;
 
 import ait.employee.model.Employee;
+import ait.employee.model.SalesManager;
+import classwork_28.car_garage.ait.cars.model.Car;
+
+import java.util.function.Predicate;
 
 public class CompanyImpl implements Company {
 
@@ -16,13 +20,13 @@ public class CompanyImpl implements Company {
     @Override
     public boolean addEmployee(Employee employee) {
         // bad cases
-        if(employee == null) {
+        if (employee == null) {
             return false;
         }
-        if (size == employees.length){
+        if (size == employees.length) {
             return false;
         }
-        if (!(findEmployee(employee.getId()) == null )){
+        if (!(findEmployee(employee.getId()) == null)) {
             return false;
         }
         // good case
@@ -35,7 +39,7 @@ public class CompanyImpl implements Company {
     @Override
     public Employee removeEmployee(int id) {
         for (int i = 0; i < size; i++) {
-            if(employees[i].getId() == id){
+            if (employees[i].getId() == id) {
                 Employee victim = employees[i];
                 employees[i] = employees[size - 1];
                 employees[size - 1] = null;
@@ -49,7 +53,7 @@ public class CompanyImpl implements Company {
     @Override
     public Employee findEmployee(int id) {
         for (int i = 0; i < size; i++) {
-            if(employees[i].getId() == id) {
+            if (employees[i].getId() == id) {
                 return employees[i];
             }
         }
@@ -78,21 +82,51 @@ public class CompanyImpl implements Company {
 
     @Override
     public double totalSalary() {
-        return 0;
+        double totalSalary = 0;
+        for (int i = 0; i < size; i++) {
+            totalSalary += employees[i].calcSalary();
+        }
+        return totalSalary;
     }
 
     @Override
     public double totalSales() {
-        return 0;
+        double totalSales = 0;
+        for (int i = 0; i < size; i++) {
+            if (employees[i] instanceof SalesManager) {
+                SalesManager sm = (SalesManager) employees[i];
+                totalSales += sm.getSalesValue();
+            }
+        }
+        return totalSales;
     }
 
     @Override
     public Employee[] findEmployeeHoursGreaterThan(int hours) {
-        return new Employee[0];
+        return findEmployeeByPredicate(employee -> employee.getHours() > hours);
     }
 
     @Override
     public Employee[] findEmployeeSalaryRange(double min, double max) {
-        return new Employee[0];
+        return findEmployeeByPredicate(employee -> employee.calcSalary() >= min && employee.calcSalary() <= max);
     }
-}
+
+    private Employee[] findEmployeeByPredicate(Predicate<Employee> predicate) {
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (predicate.test(employees[i])) { // объект проходит тест
+                count++;
+            }
+        }
+
+        // читаем массив и перекладываем рез-ты в новый
+        Employee[] res = new Employee[count];
+        for (int i = 0, j = 0 ; j < res.length; i++) {
+            if(predicate.test(employees[i])){
+                res[j++] = employees[i];
+            }
+        }
+        return res;
+    }
+
+}//end of class
