@@ -13,5 +13,8 @@ public interface Garage {
     Car[] findCarsByColor(String color);
     int size();
     void printCars();
+    void sortByColor();
+    void sortByCompany();
+    void sortByModel();
 
 }

@@ -1,8 +1,9 @@
 package classwork_28.car_garage.ait.cars.dao;
 
 import classwork_28.car_garage.ait.cars.model.Car;
-import homework_27.marathon.book_library.entity.Book;
 
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.function.Predicate;
 
 public class GarageImpl implements Garage{
@@ -80,6 +81,51 @@ public class GarageImpl implements Garage{
             System.out.println(cars[i]);
         }
     }
+
+
+       @Override
+    public void sortByColor() {
+
+        Comparator<Car> comparatorByColor = new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                return o1.getColor().compareTo(o2.getColor());
+            }
+
+        };
+           Arrays.sort(cars, 0, size, comparatorByColor);
+
+       }
+
+    @Override
+    public void sortByCompany() {
+
+        Comparator<Car> comparatorByCompany = new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                return o1.getCompany().compareTo(o2.getCompany());
+            }
+
+        };
+        Arrays.sort(cars, 0, size, comparatorByCompany);
+
+    }
+
+    @Override
+    public void sortByModel() {
+
+        Comparator<Car> comparatorByModel = new Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                return o1.getModel().compareTo(o2.getModel());
+            }
+
+        };
+        Arrays.sort(cars, 0, size, comparatorByModel);
+
+    }
+
+
     // в этот метод передаем логическое выражение, которое будет тестировать объекты типа Car
     private Car[] findCarsByPredicate(Predicate<Car> predicate){
         int count = 0;

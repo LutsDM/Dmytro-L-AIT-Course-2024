@@ -6,6 +6,8 @@ import classwork_28.car_garage.ait.cars.model.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class GarageImplTest {
@@ -28,6 +30,12 @@ class GarageImplTest {
             garage.addCar(cars[i]);
         }
 
+    }
+
+    private void printArray(Car[] array) {
+        for (Car car : array) {
+            System.out.println(car);
+        }
     }
 
     @Test
@@ -87,5 +95,45 @@ class GarageImplTest {
     void printCarsTest(){
         garage.printCars();
     }
+
+    @Test
+    void sortByColorTest() {
+        garage.sortByColor();
+        Car[] expected = {cars[0], cars[2], cars[1], cars[3]};
+        Car[] actual = {
+                garage.findCarsByColor("Red")[0],
+                garage.findCarsByColor("Red")[1],
+                garage.findCarsByColor("Green")[0],
+                garage.findCarsByColor("Green")[1]
+        };
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void sortByCompanyTest() {
+        garage.sortByCompany();
+        Car[] expected = {cars[0], cars[1], cars[2], cars[3]};
+        Car[] actual = {
+                garage.findCarByRegNumber("Number1"),
+                garage.findCarByRegNumber("Number2"),
+                garage.findCarByRegNumber("Number3"),
+                garage.findCarByRegNumber("Number4")
+        };
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void sortByModelTest() {
+        garage.sortByModel();
+        Car[] expected = {cars[0], cars[2], cars[1], cars[3]};
+        Car[] actual = {
+                garage.findCarByRegNumber("Number1"),
+                garage.findCarByRegNumber("Number3"),
+                garage.findCarByRegNumber("Number2"),
+                garage.findCarByRegNumber("Number4")
+        };
+        assertArrayEquals(expected, actual);
+    }
+
 
 }// end of class
