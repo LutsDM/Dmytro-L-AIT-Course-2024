@@ -1,4 +1,4 @@
-package homework_34.event.model;
+package homework_35.event.model;
 
 import java.time.LocalDate;
 
@@ -74,6 +74,7 @@ public class Event implements Comparable<Event>{
 
     @Override
     public int compareTo(Event o) {
-        return this.getId() - o.getId();
+
+        return this.getDate().compareTo(o.getDate());
     }
 }
