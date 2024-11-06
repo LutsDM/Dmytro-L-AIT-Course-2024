@@ -54,19 +54,15 @@ class SupermarketImplTest {
         assertNull(supermarket.findByBarCode(9999L));
     }
 
-//    @Test
-//    void findByCategoryTest() {
-//        Product[] expected = {products[0], products[3]};
-//        Iterable<Product> actual = supermarket.findByCategoru("Dairy");
-//        assertIterableEquals(expected, actual);
-//    }
+    @Test
+    void findByCategoryTest() {
 
-//    @Test
-//    void findByBrandTest() {
-//        Product[] expected = {products[0], products[3]};
-//        Iterable<Product> actual = supermarket.findByBrand("BrandA");
-//        assertIterableEquals(expected, actual);
-//    }
+    }
+
+    @Test
+    void findByBrandTest() {
+
+    }
 
 
 }

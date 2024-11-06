@@ -50,6 +50,19 @@ public class Product {
     }
 
     @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product product)) return false;
+
+        return barCode == product.barCode;
+    }
+
+    @Override
+    public int hashCode() {
+        return Long.hashCode(barCode);
+    }
+
+    @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Product{");
         sb.append("barCode=").append(barCode);
@@ -62,22 +75,5 @@ public class Product {
         return sb.toString();
     }
 
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product product)) return false;
 
-        return barCode == product.barCode && Double.compare(price, product.price) == 0 && Objects.equals(name, product.name) && Objects.equals(category, product.category) && Objects.equals(brand, product.brand) && Objects.equals(expDate, product.expDate);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = Long.hashCode(barCode);
-        result = 31 * result + Objects.hashCode(name);
-        result = 31 * result + Objects.hashCode(category);
-        result = 31 * result + Objects.hashCode(brand);
-        result = 31 * result + Double.hashCode(price);
-        result = 31 * result + Objects.hashCode(expDate);
-        return result;
-    }
 }

@@ -28,7 +28,7 @@ public class SupermarketImpl implements Supermarket {
     }
 
     @Override
-    public Iterable<Product> findByCategoru(String category) {
+    public Iterable<Product> findByCategory(String category) {
         return null;
     }
 

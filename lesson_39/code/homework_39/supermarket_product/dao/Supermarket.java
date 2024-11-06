@@ -6,7 +6,7 @@ public interface Supermarket {
     boolean addProduct (Product product);
     Product removeProduct (long barCode);
     Product findByBarCode (long barCode);
-    Iterable <Product> findByCategoru (String category);
+    Iterable <Product> findByCategory (String category);
     Iterable <Product> findByBrand (String brand);
     Iterable <Product> findProductsWithExpireDate();
     int skuQuantity();
