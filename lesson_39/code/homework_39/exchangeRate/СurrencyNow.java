@@ -17,14 +17,6 @@ public enum СurrencyNow {
         this.rate = rate;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setRate(Double rate) {
-        this.rate = rate;
-    }
-
     public String getName() {
         return name;
     }
