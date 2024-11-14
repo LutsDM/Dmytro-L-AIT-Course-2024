@@ -90,6 +90,11 @@ public class CompanyImpl implements Company {
     }
 
     @Override
+    public double averageSalary() {
+        return totalSalary()/size;
+    }
+
+    @Override
     public double totalSales() {
         double totalSales = 0;
         for (int i = 0; i < size; i++) {

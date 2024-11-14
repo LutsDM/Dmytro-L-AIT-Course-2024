@@ -18,6 +18,8 @@ public interface Company {
 
     double totalSalary();
 
+    double averageSalary();
+
     double totalSales();
 
     Employee[] findEmployeeHoursGreaterThan (int hours);

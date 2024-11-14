@@ -65,7 +65,7 @@ class CitizensTest {
 
     @Test
     void testFindByAges() {
-        Iterable<Person> res = citizens.find(20, 23);
+        Iterable<Person> res = citizens.find(10, 23);
 //        for (Person person : res) {
 //            assertTrue(person.getAge() >= 20 && person.getAge() <= 23);
 //        }

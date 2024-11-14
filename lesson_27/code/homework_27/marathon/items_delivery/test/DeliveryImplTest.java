@@ -32,6 +32,7 @@ class DeliveryImplTest {
         item[4] = new Drink(1001_100005L,"Coca_Cola",1.25,0.5,false); // 0.025
         item[5] = new Drink(1001_100007L,"Beer",1.35,0.5,true); // 0.027
 
+
         for (Item i : item) {
             delivery.addItem(i);
         }

@@ -1,0 +1,94 @@
+                            // метод обобщения Comparator когда сортируем по нескольким основанием
+
+public static Car [] sortByAll ( Car []array, String fieldForSort) {
+
+    Comparator <Car> compByAll = new Comparator<Car>() {
+        @Override
+        public int compare(Car o1, Car o2) {
+            int res = 0;
+            switch (fieldForSort){
+                case "model" ->  res = o1.getModel().compareTo(o2.getModel());
+                case "company" ->   res = o1.getCompany().compareTo(o2.getCompany());
+                case "color" ->   res = o1.getColor().compareTo(o2.getColor());
+                case "engine" ->  res =  Double.compare(o1.getEngine(), o2.getEngine());
+            }
+            return res;
+        }
+    };
+    Arrays.sort(array, compByAll);
+    return  array;
+    }//end sortByAll
+
+    ---------его вызов в интерфейсе-------
+
+@Override
+public Car[] sortCarsByCompany(Car [] cars) {
+    return sortByAll(cars, "company");
+}//end sortCarsByCompany
+
+@Override
+public Car[] sortCarsByModel(Car [] cars) {
+    return sortByAll(cars, "model");
+}// end sortCarsByModel
+
+@Override
+public Car[] sortCarsByColor( Car [] cars ) {
+    return sortByAll(cars, "color");
+}//end sortCarsByColor
+
+
+                            // печатать массив сразу с названием массива
+
+  private void printArray (Object[] array, String titleOfReport) {
+        System.out.println("--------------" + titleOfReport + "------------------");
+        for (Object o : array) {
+            System.out.println(o);
+        }
+    }
+
+                            //метод поиска самого дешевого (минимального) через метод внутри класса
+
+  @Override
+     public Ticket findTicketByMinCost() {
+         Ticket minCostTicket = tickets[0];
+         double minCost = minCostTicket.calcCost();
+         for (int i = 0; i < size; i++) {
+             if(tickets[i].calcCost() < minCost) {
+                 minCost = tickets[i].calcCost();
+                 minCostTicket = tickets[i];
+             }
+         }
+         return minCostTicket;
+     }
+
+
+                            // Predicate in Impl
+
+ private Document[] findDocumentByPredicate (Predicate<Document> predicate) {
+         int count  = 0;
+         for (int i = 0; i < size; i++) {
+             if(predicate.test(documents[i])) {
+                 count++;
+             }
+         }
+
+         Document[] res = new Document[count];
+         for (int i = 0, j = 0 ; j < res.length; i++) {
+             if(predicate.test(documents[i])){
+                 res[j++] = documents[i];
+             }
+         }
+         return res;
+
+     }
+
+метод набивание нового массива найдеными по предекату
+
+@Override
+    public Document[] findDocumentByAuthor(String author) {
+        return findDocumentByPredicate(document -> document.getAuthor().equals(author));
+    }
+
+
+                    //печать MAP
+    numbersMap.forEach((key, value)-> System.out.println(key + " : " + value));

@@ -31,7 +31,7 @@ class StockImplTest {
     }
 
     @Test
-    void addDetail() {
+    void addDetailTest() {
         assertFalse(stock.addDetail(null));
         assertFalse(stock.addDetail(details[2]));
         Detail newDetail = new Gear(11_105L,9, "metalvv","V2",450,2,5);
@@ -43,32 +43,32 @@ class StockImplTest {
     }
 
     @Test
-    void findDetail() {
+    void findDetailTest() {
         assertEquals(details[1], stock.findDetail(11_102L));
         assertNull(stock.findDetail(999L));
     }
 
     @Test
-    void updateDetail() {
+    void updateDetailTest() {
         Detail newDetail = new Gear(11_101L,9, "metalvv","V2",450,2,5);
         assertEquals(details[0], stock.updateDetail(newDetail));
 
     }
 
     @Test
-    void removeDetail() {
+    void removeDetailTest() {
         assertEquals(details[1], stock.removeDetail(11_102L));
         assertEquals( 3, stock.size());
         assertNull(stock.removeDetail(11_102L));
     }
 
     @Test
-    void totalWeight() {
+    void totalWeightTest() {
         assertEquals(40, stock.totalWeight(details));
     }
 
     @Test
-    void averageWeight() {
+    void averageWeightTest() {
         assertEquals(10, stock.averageWeight(details));
     }
 

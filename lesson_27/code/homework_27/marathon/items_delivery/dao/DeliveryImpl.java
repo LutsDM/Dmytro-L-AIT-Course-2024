@@ -3,6 +3,7 @@ package homework_27.marathon.items_delivery.dao;
 
 import homework_27.marathon.items_delivery.entity.Item;
 
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 public class DeliveryImpl implements Delivery {
@@ -13,7 +14,7 @@ public class DeliveryImpl implements Delivery {
 
     public DeliveryImpl(int capacity) {
         this.items = new Item[capacity];
-        this.size = size;
+        //this.size = size;
     }
 
     @Override
@@ -69,10 +70,10 @@ public class DeliveryImpl implements Delivery {
 
     @Override
     public void printItem() {
-        for (Item i : items) {
-            System.out.println(i);
+       Arrays.sort(items, 0, size);
+        for (int i = 0; i < size; i++) {
+            System.out.println(items[i]);
         }
-
     }
 
     @Override

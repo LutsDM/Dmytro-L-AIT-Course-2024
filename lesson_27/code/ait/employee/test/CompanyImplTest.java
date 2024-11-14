@@ -98,6 +98,11 @@ class CompanyImplTest {
     }
 
     @Test
+    void averageSalaryTest() {
+        assertEquals(company.totalSalary()/company.quantity(), company.averageSalary());
+    }
+
+    @Test
     void findEmployeeHoursGreaterThanTest() {
         Employee[] expected = {emp[1],emp[2]};
         Employee[] actual = company.findEmployeeHoursGreaterThan(160);
@@ -116,4 +121,6 @@ class CompanyImplTest {
         assertArrayEquals(expected, actual);
 
     }
+
+
 }
